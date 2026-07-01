@@ -138,6 +138,13 @@
     display:inline-block;
   }
   .btn-book:hover{transform:translateY(-1px);background:#a8552d;}
+  .book-split{display:flex;gap:0.5rem;}
+  .book-split .btn-book{padding:0.75rem 1.1rem;font-size:0.68rem;letter-spacing:0.06em;}
+  .btn-book-alt{background:#0068FF;border-color:#0068FF;}
+  .btn-book-alt:hover{background:#0052cc;}
+  @media (max-width: 480px){
+    .book-split .btn-book{padding:0.65rem 0.8rem;font-size:0.6rem;}
+  }
   .nav-toggle{display:none;}
 
   /* ---------- hero ---------- */
@@ -486,7 +493,10 @@
     <a href="#amenities">Amenities</a>
     <a href="#location">Location</a>
   </nav>
-  <a href="https://wa.me/842353665666?text=Hi!%20I'd%20like%20to%20check%20availability%20at%20Cozy%20An%20Boutique%20Hotel." target="_blank" rel="noopener" class="btn-book">Book Now</a>
+  <div class="book-split">
+    <a href="https://wa.me/842353665666?text=Hi!%20I'd%20like%20to%20check%20availability%20at%20Cozy%20An%20Boutique%20Hotel." target="_blank" rel="noopener" class="btn-book">Book via WhatsApp</a>
+    <a href="https://zalo.me/842353665666" target="_blank" rel="noopener" class="btn-book btn-book-alt">Book via Zalo</a>
+  </div>
 </header>
 
 <section class="hero" id="top">
