@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cozy An Boutique Hotel — Hội An, Vietnam</title>
+<meta name="description" content="A riverside sanctuary in the heart of Hội An. Cozy An Boutique Hotel — quiet luxury, lantern-lit evenings, and the warmth of Vietnamese hospitality.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink: #1B2E28;
+    --ink-soft: #233B33;
+    --sand: #EFE6D8;
+    --paper: #FAF7F2;
+    --lantern: #C1693C;
+    --bronze: #A98A5B;
+    --charcoal: #2B2722;
+    --line: rgba(43,39,34,0.12);
+    --line-light: rgba(250,247,242,0.22);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    color:var(--charcoal);
+    background:var(--paper);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{font-family:'Fraunces',serif;font-weight:500;letter-spacing:-0.01em;}
+  a{text-decoration:none;color:inherit;}
+  img,.ph{display:block;width:100%;height:100%;object-fit:cover;}
+  .eyebrow{
+    font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;
+    color:var(--lantern);font-weight:600;
+  }
+  .eyebrow.light{color:var(--bronze);}
+  :focus-visible{outline:2px solid var(--lantern);outline-offset:3px;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;scroll-behavior:auto !important;}
+  }
+
+  /* ---------- placeholder photography blocks ---------- */
+  .ph{
+    position:relative;
+    background:
+      radial-gradient(120% 140% at 15% 10%, rgba(193,105,60,0.18), transparent 55%),
+      linear-gradient(160deg, #2c4438 0%, #1B2E28 55%, #142019 100%);
+    display:flex;align-items:flex-end;justify-content:flex-start;
+    overflow:hidden;
+  }
+  .ph::before{
+    content:"";position:absolute;inset:0;
+    background-image:repeating-linear-gradient(115deg, rgba(255,255,255,0.035) 0px, rgba(255,255,255,0.035) 1px, transparent 1px, transparent 7px);
+  }
+  .ph .ph-tag{
+    position:relative;z-index:2;margin:1.4rem;
+    font-family:'Inter',sans-serif;font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;
+    color:rgba(250,247,242,0.55);
+    border:1px solid rgba(250,247,242,0.25);
+    padding:0.45rem 0.8rem;border-radius:2px;
+    backdrop-filter:blur(2px);
+  }
+  .ph.light{background:linear-gradient(160deg, #ECE2D0 0%, #DFD0B6 60%, #D3C19F 100%);}
+  .ph.light::before{background-image:repeating-linear-gradient(115deg, rgba(27,46,40,0.04) 0px, rgba(27,46,40,0.04) 1px, transparent 1px, transparent 7px);}
+  .ph.light .ph-tag{color:rgba(43,39,34,0.55);border-color:rgba(43,39,34,0.22);}
+  .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
+  .ph.has-img::before{display:none;}
+  .ph.has-img{background:#1B2E28;}
+  .ph .credit{
+    position:absolute;bottom:0.7rem;right:0.9rem;z-index:2;
+    font-size:0.6rem;color:rgba(250,247,242,0.55);letter-spacing:0.02em;
+  }
+
+  /* ---------- reveal on scroll ---------- */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.9s cubic-bezier(.22,1,.36,1), transform 0.9s cubic-bezier(.22,1,.36,1);}
+  .reveal.in{opacity:1;transform:translateY(0);}
+  .reveal-stagger > *{opacity:0;transform:translateY(22px);transition:opacity 0.7s ease, transform 0.7s ease;}
+  .reveal-stagger.in > *{opacity:1;transform:translateY(0);}
+  .reveal-stagger.in > *:nth-child(1){transition-delay:0.05s;}
+  .reveal-stagger.in > *:nth-child(2){transition-delay:0.15s;}
+  .reveal-stagger.in > *:nth-child(3){transition-delay:0.25s;}
+  .reveal-stagger.in > *:nth-child(4){transition-delay:0.35s;}
+
+  /* ---------- nav ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:1.1rem 4vw;
+    background:rgba(250,247,242,0.5);
+    backdrop-filter:blur(16px) saturate(1.1);-webkit-backdrop-filter:blur(16px) saturate(1.1);
+    box-shadow:0 1px 0 rgba(250,247,242,0.25);
+    transition:background 0.45s ease, padding 0.45s ease, box-shadow .45s ease;
+  }
+  header.scrolled{
+    background:rgba(250,247,242,0.92);
+    padding:0.85rem 4vw;box-shadow:0 1px 0 var(--line);
+  }
+  .brand{display:flex;align-items:center;gap:0.6rem;color:var(--ink);}
+  .lantern-mark{width:20px;height:26px;flex-shrink:0;}
+  .lantern-mark path{stroke:currentColor;fill:none;stroke-width:1.3;}
+  .brand-name{font-family:'Fraunces',serif;font-size:0.92rem;letter-spacing:0.03em;white-space:nowrap;}
+  .brand-name b{font-weight:600;}
+  .logo-badge{display:inline-flex;align-items:center;}
+  .logo-badge img{height:78px;width:auto;display:block;}
+  footer .logo-badge{
+    display:inline-flex;align-items:center;background:rgba(250,247,242,0.92);
+    padding:0.5rem 1rem;border-radius:3px;
+  }
+  footer .logo-badge img{height:90px;}
+  .social-row{display:flex;gap:0.7rem;margin-top:1.3rem;}
+  .social-row a{
+    width:34px;height:34px;border-radius:50%;border:1px solid var(--line-light);
+    display:flex;align-items:center;justify-content:center;color:rgba(250,247,242,0.75);
+    transition:border-color .3s ease,color .3s ease,background .3s ease;
+  }
+  .social-row a:hover{border-color:var(--lantern);color:var(--paper);background:rgba(193,105,60,0.18);}
+  .social-row svg{width:16px;height:16px;}
+  nav.links{display:flex;gap:2.4rem;}
+  nav.links a{
+    font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;
+    color:var(--ink-soft);position:relative;padding-bottom:3px;
+    transition:color .45s ease;
+  }
+  nav.links a::after{
+    content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--lantern);
+    transition:width 0.35s ease;
+  }
+  nav.links a:hover::after{width:100%;}
+  .btn-book{
+    font-size:0.74rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;
+    color:var(--paper);background:var(--lantern);
+    padding:0.75rem 1.5rem;border-radius:1px;
+    border:1px solid var(--lantern);
+    transition:background .3s ease, color .3s ease, transform .3s ease;
+    display:inline-block;
+  }
+  .btn-book:hover{transform:translateY(-1px);background:#a8552d;}
+  .nav-toggle{display:none;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;height:100svh;min-height:700px;
+    display:flex;flex-direction:column;justify-content:flex-end;
+    color:var(--paper);
+  }
+  .hero .ph{position:absolute;inset:0;z-index:0;}
+  .hero-slides{position:absolute;inset:0;z-index:0;}
+  .hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.1s ease;}
+  .hero-slide.active{opacity:1;}
+  .hero-content{transition:opacity 0.6s ease;}
+  .hero-dots{
+    position:absolute;z-index:3;bottom:2.3rem;left:4vw;display:flex;gap:0.6rem;
+  }
+  .hero-dots span{
+    width:26px;height:2px;background:rgba(250,247,242,0.35);cursor:pointer;
+    transition:background .3s ease;
+  }
+  .hero-dots span.active{background:#E9C9A6;}
+  .hero::after{
+    content:"";position:absolute;inset:0;z-index:1;
+    background:linear-gradient(180deg, rgba(20,32,25,0.15) 0%, rgba(20,32,25,0.05) 35%, rgba(15,23,18,0.78) 100%);
+  }
+  .hero-content{position:relative;z-index:2;padding:9rem 4vw 7vw;max-width:920px;}
+  .hero-eyebrow{
+    display:flex;align-items:center;gap:0.7rem;margin-bottom:1.4rem;
+    font-size:0.74rem;letter-spacing:0.24em;text-transform:uppercase;color:#3F6B57;
+    text-shadow:0 1px 8px rgba(0,0,0,0.35);
+  }
+  .hero-eyebrow .rule{width:34px;height:1px;background:#3F6B57;}
+  .hero h1{
+    font-size:clamp(2.6rem, 6.4vw, 5.4rem);line-height:1.04;font-weight:500;
+    letter-spacing:-0.015em;
+  }
+  .hero h1 em{font-style:italic;font-weight:300;color:#E9C9A6;}
+  .hero p.lede{
+    margin-top:1.6rem;max-width:520px;font-size:1.05rem;line-height:1.65;
+    color:rgba(250,247,242,0.82);font-weight:300;
+  }
+  .hero-cta{margin-top:2.4rem;display:flex;gap:1rem;flex-wrap:wrap;align-items:center;}
+  .btn-ghost{
+    font-size:0.76rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;
+    color:var(--paper);padding:0.85rem 1.6rem;border:1px solid rgba(250,247,242,0.5);
+    transition:border-color .3s ease, background .3s ease;
+  }
+  .btn-ghost:hover{border-color:var(--paper);background:rgba(250,247,242,0.08);}
+
+  /* floating lanterns — signature element */
+  .lanterns{position:absolute;inset:0;z-index:1;pointer-events:none;}
+  .lantern-svg{
+    position:absolute;opacity:0;
+    animation:rise 14s ease-in infinite, sway 5s ease-in-out infinite;
+  }
+  .lantern-svg svg{width:100%;height:100%;}
+  .lantern-svg .l1{fill:#C1693C;}
+  .lantern-svg .l2{fill:#e8b27b;}
+  @keyframes rise{
+    0%{opacity:0; transform:translateY(0);}
+    8%{opacity:0.85;}
+    85%{opacity:0.6;}
+    100%{opacity:0; transform:translateY(-62vh);}
+  }
+  @keyframes sway{
+    0%,100%{margin-left:0;}
+    50%{margin-left:18px;}
+  }
+  .scroll-cue{
+    position:absolute;z-index:2;bottom:2.2rem;right:4vw;
+    display:flex;flex-direction:column;align-items:center;gap:0.6rem;
+    color:rgba(250,247,242,0.65);font-size:0.66rem;letter-spacing:0.18em;text-transform:uppercase;
+  }
+  .scroll-cue .line{width:1px;height:38px;background:rgba(250,247,242,0.4);position:relative;overflow:hidden;}
+  .scroll-cue .line::after{content:"";position:absolute;top:-100%;left:0;width:100%;height:100%;background:#E9C9A6;animation:cue 2.2s ease-in-out infinite;}
+  @keyframes cue{0%{top:-100%;}50%{top:0;}100%{top:100%;}}
+
+  section{padding:7.5rem 4vw;}
+  .section-inner{max-width:1280px;margin:0 auto;}
+
+  /* ---------- experience ---------- */
+  .experience{background:var(--paper);}
+  .exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:5vw;align-items:center;}
+  .exp-text .eyebrow{margin-bottom:1rem;}
+  .exp-text h2{font-size:clamp(2rem,3.6vw,3.1rem);line-height:1.12;margin-bottom:1.6rem;}
+  .exp-text p{font-size:1.02rem;line-height:1.8;color:#4a443c;font-weight:300;max-width:480px;}
+  .exp-text p + p{margin-top:1.1rem;}
+  .exp-stats{display:flex;gap:2.6rem;margin-top:2.6rem;}
+  .exp-stats div b{font-family:'Fraunces',serif;font-size:1.9rem;font-weight:500;color:var(--ink);display:block;}
+  .exp-stats div span{font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:#8a8174;}
+  .exp-media{position:relative;aspect-ratio:4/4.6;}
+  .exp-media .ph:not(.float-card){position:absolute;inset:0;}
+  .exp-media .float-card{
+    position:absolute;left:-2.4rem;bottom:-2.2rem;width:58%;height:auto;aspect-ratio:5/4;
+    box-shadow:0 30px 60px -20px rgba(27,46,40,0.35);
+    border:6px solid var(--paper);
+  }
+
+  /* ---------- summer offer strip ---------- */
+  .offer{background:var(--ink);color:var(--paper);position:relative;overflow:hidden;}
+  .offer::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(120% 100% at 85% 0%, rgba(193,105,60,0.14), transparent 60%);
+  }
+  .offer .section-inner{position:relative;z-index:1;padding:4.5rem 4vw;max-width:1280px;margin:0 auto;}
+  .offer-top{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-bottom:2.6rem;}
+  .offer-top h2{font-size:clamp(1.9rem,3.2vw,2.6rem);max-width:520px;line-height:1.18;}
+  .offer-price{text-align:right;}
+  .offer-price .from{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--bronze);}
+  .offer-price .amount{font-family:'Fraunces',serif;font-size:clamp(1.8rem,3vw,2.4rem);font-weight:500;color:#E9C9A6;}
+  .offer-price .unit{font-size:0.78rem;color:rgba(250,247,242,0.55);}
+  .offer-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:3.5rem;}
+  .offer-benefits{display:flex;flex-direction:column;gap:0;}
+  .offer-benefits .b-item{
+    padding:0.95rem 0;border-top:1px solid var(--line-light);
+    font-size:0.92rem;color:rgba(250,247,242,0.85);font-weight:300;
+    display:flex;gap:0.7rem;align-items:flex-start;
+  }
+  .offer-benefits .b-item:last-child{border-bottom:1px solid var(--line-light);}
+  .offer-benefits .b-item span.dot{color:var(--lantern);flex-shrink:0;}
+  .offer-dates{display:flex;flex-direction:column;gap:1.3rem;}
+  .offer-dates .d-item .eyebrow{margin-bottom:0.3rem;}
+  .offer-dates .d-item p{font-size:0.92rem;color:rgba(250,247,242,0.8);font-weight:300;}
+  .offer-foot{margin-top:2.6rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;}
+  .offer-foot p{font-size:0.84rem;color:rgba(250,247,242,0.55);font-weight:300;}
+
+  /* ---------- rooms ---------- */
+  .rooms{background:var(--ink);color:var(--paper);padding-bottom:0;}
+  .rooms .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;margin-bottom:3.5rem;flex-wrap:wrap;}
+  .rooms .section-head h2{font-size:clamp(2rem,3.6vw,3.1rem);max-width:560px;}
+  .rooms .section-head p{color:rgba(250,247,242,0.6);max-width:380px;font-weight:300;line-height:1.7;}
+  .room-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;}
+  .room-card{
+    border:1px solid var(--line-light);position:relative;overflow:hidden;
+    transition:transform .5s cubic-bezier(.22,1,.36,1), border-color .5s ease;
+  }
+  .room-card:hover{transform:translateY(-8px);border-color:rgba(193,105,60,0.5);}
+  .room-media{aspect-ratio:4/5;position:relative;overflow:hidden;}
+  .room-media .ph{transition:transform .8s ease;}
+  .room-card:hover .room-media .ph{transform:scale(1.06);}
+  .room-price{
+    position:absolute;top:1rem;right:1rem;z-index:2;
+    background:rgba(15,23,18,0.55);backdrop-filter:blur(6px);
+    padding:0.4rem 0.8rem;font-size:0.72rem;letter-spacing:0.04em;color:#E9C9A6;
+    border:1px solid rgba(250,247,242,0.2);
+  }
+  .room-body{padding:1.6rem 1.5rem 1.9rem;}
+  .room-body .num{font-size:0.7rem;color:var(--bronze);letter-spacing:0.1em;margin-bottom:0.5rem;display:block;}
+  .room-body h3{font-size:1.3rem;margin-bottom:0.5rem;}
+  .room-body p{font-size:0.86rem;color:rgba(250,247,242,0.6);line-height:1.6;font-weight:300;margin-bottom:1.2rem;}
+  .room-link{
+    font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--paper);
+    display:inline-flex;align-items:center;gap:0.5rem;border-bottom:1px solid rgba(250,247,242,0.3);padding-bottom:3px;
+    transition:border-color .3s ease, gap .3s ease, color .3s ease;
+  }
+  .room-link:hover{border-color:var(--lantern);color:#E9C9A6;gap:0.8rem;}
+
+  /* ---------- gallery ---------- */
+  .gallery{background:var(--paper);padding-top:4rem;}
+  .gallery .section-head{text-align:center;max-width:640px;margin:0 auto 3.5rem;}
+  .gallery .section-head h2{font-size:clamp(2rem,3.6vw,3.1rem);}
+  .masonry{
+    columns:3 220px;column-gap:1rem;
+  }
+  .masonry .ph{margin-bottom:1rem;break-inside:avoid;border-radius:2px;}
+  .masonry .ph:nth-child(1){aspect-ratio:4/5;}
+  .masonry .ph:nth-child(2){aspect-ratio:1/1;}
+  .masonry .ph:nth-child(3){aspect-ratio:4/5.6;}
+  .masonry .ph:nth-child(4){aspect-ratio:1/1.1;}
+  .masonry .ph:nth-child(5){aspect-ratio:4/3.4;}
+  .masonry .ph:nth-child(6){aspect-ratio:4/5;}
+  .masonry .ph:nth-child(7){aspect-ratio:4/3;}
+  .masonry .ph:nth-child(8){aspect-ratio:1/1.2;}
+  .masonry .ph:nth-child(9){aspect-ratio:4/5.2;}
+  .masonry .ph:nth-child(10){aspect-ratio:4/3.6;}
+
+  /* ---------- amenities band ---------- */
+  .amenities{background:var(--sand);}
+  .amen-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:5vw;align-items:center;}
+  .amen-media{aspect-ratio:5/4;position:relative;}
+  .amen-list{display:flex;flex-direction:column;gap:0;}
+  .amen-item{
+    padding:1.6rem 0;border-bottom:1px solid var(--line);
+    display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
+    transition:padding-left .35s ease;
+  }
+  .amen-item:hover{padding-left:0.6rem;}
+  .amen-item:first-child{border-top:1px solid var(--line);}
+  .amen-item h3{font-size:1.25rem;font-weight:500;}
+  .amen-item span{font-size:0.78rem;color:#8a8174;letter-spacing:0.04em;text-align:right;max-width:220px;font-weight:300;}
+
+  /* ---------- location ---------- */
+  .location{background:var(--ink);color:var(--paper);padding-bottom:0;}
+  .loc-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:5vw;align-items:center;}
+  .loc-text h2{font-size:clamp(2rem,3.4vw,2.8rem);margin-bottom:1.4rem;}
+  .loc-text p{color:rgba(250,247,242,0.65);font-weight:300;line-height:1.8;max-width:420px;margin-bottom:2rem;}
+  .loc-points{display:flex;flex-direction:column;gap:1rem;}
+  .loc-points div{display:flex;justify-content:space-between;border-top:1px solid var(--line-light);padding-top:0.9rem;font-size:0.86rem;}
+  .loc-points div b{font-weight:500;color:var(--paper);}
+  .loc-points div span{color:var(--bronze);}
+  .map-frame{
+    aspect-ratio:5/4;position:relative;border:1px solid var(--line-light);overflow:hidden;
+    background:#1f342c;
+  }
+  .map-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .map-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(15,23,18,0.15) 0%, rgba(15,23,18,0.55) 100%);}
+  .map-pin{
+    position:absolute;top:46%;left:38%;transform:translate(-50%,-100%);z-index:2;
+    display:flex;flex-direction:column;align-items:center;
+  }
+  .map-pin .dot{width:14px;height:14px;border-radius:50%;background:var(--lantern);box-shadow:0 0 0 6px rgba(193,105,60,0.25);}
+  .map-pin .stick{width:1px;height:26px;background:var(--lantern);}
+  .map-label{
+    position:absolute;bottom:1.4rem;left:1.4rem;z-index:2;font-size:0.72rem;letter-spacing:0.08em;
+    color:rgba(250,247,242,0.8);text-transform:uppercase;
+  }
+
+  /* ---------- testimonials ---------- */
+  .testimonials{background:var(--ink);color:var(--paper);padding:0;}
+  .testi-head{max-width:600px;}
+  .testi-carousel{
+    width:100%;overflow:hidden;position:relative;
+    padding:2.5rem 0;
+  }
+  .testi-carousel::before,
+  .testi-carousel::after{
+    content:"";position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none;
+  }
+  .testi-carousel::before{left:0;background:linear-gradient(to right,var(--ink) 0%,transparent 100%);}
+  .testi-carousel::after{right:0;background:linear-gradient(to left,var(--ink) 0%,transparent 100%);}
+  .testi-track{
+    display:flex;flex-direction:row;flex-wrap:nowrap;
+    gap:1.2rem;
+    animation:ticker 32s linear infinite;
+    will-change:transform;
+  }
+  .testi-track:hover{animation-play-state:paused;}
+  @keyframes ticker{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(-50%);}
+  }
+  .testi-card{
+    flex:0 0 320px;
+    background:rgba(250,247,242,0.06);
+    border:1px solid rgba(250,247,242,0.1);
+    padding:1.6rem 1.5rem 1.8rem;
+    transition:background .3s,border-color .3s;
+  }
+  .testi-card:hover{background:rgba(250,247,242,0.1);border-color:rgba(193,105,60,0.4);}
+  .testi-card-head{display:flex;align-items:center;gap:0.8rem;margin-bottom:1.1rem;}
+  .testi-avatar{
+    width:40px;height:40px;border-radius:50%;flex-shrink:0;
+    background:rgba(169,138,91,0.25);border:1px solid rgba(169,138,91,0.4);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif;font-size:0.95rem;color:#E9C9A6;
+  }
+  .testi-card-meta .reviewer{font-size:0.84rem;font-weight:600;color:#E9C9A6;margin-bottom:0.2rem;}
+  .testi-card-meta .service{font-size:0.63rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(250,247,242,0.35);}
+  .testi-stars-sm{display:flex;gap:3px;margin-bottom:0.9rem;}
+  .testi-stars-sm span{width:7px;height:7px;border-radius:50%;background:var(--lantern);display:inline-block;}
+  .testi-card-quote{
+    font-family:'Fraunces',serif;font-style:italic;font-weight:400;
+    font-size:0.96rem;line-height:1.65;color:rgba(250,247,242,0.88);
+  }
+  .testi-source{margin-top:1.1rem;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(250,247,242,0.2);}
+  @media(prefers-reduced-motion:reduce){
+    .testi-track{animation:none;flex-wrap:wrap;width:100%;}
+    .testi-carousel::before,.testi-carousel::after{display:none;}
+    .testi-card{flex:0 0 45%;}
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq{background:var(--sand);}
+  .faq .section-inner{max-width:820px;}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{
+    width:100%;text-align:left;background:none;border:none;cursor:pointer;
+    padding:1.6rem 0;display:flex;justify-content:space-between;align-items:center;gap:1rem;
+    font-family:'Fraunces',serif;font-size:1.15rem;color:var(--ink);
+  }
+  .faq-q .plus{font-size:1.3rem;font-weight:300;color:var(--lantern);transition:transform .35s ease;flex-shrink:0;}
+  .faq-item.open .plus{transform:rotate(45deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .45s ease;}
+  .faq-a p{padding-bottom:1.6rem;font-size:0.92rem;line-height:1.75;color:#4a443c;font-weight:300;max-width:640px;}
+
+  /* ---------- final cta ---------- */
+  .final-cta{position:relative;color:var(--paper);text-align:center;}
+  .final-cta .ph{position:absolute;inset:0;z-index:0;}
+  .final-cta::after{content:"";position:absolute;inset:0;z-index:1;background:rgba(15,23,18,0.62);}
+  .final-cta .section-inner{position:relative;z-index:2;}
+  .final-cta h2{font-size:clamp(2.2rem,4.4vw,3.6rem);max-width:760px;margin:0 auto 1.6rem;}
+  .final-cta p{color:rgba(250,247,242,0.75);font-weight:300;max-width:480px;margin:0 auto 2.4rem;}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--ink);color:rgba(250,247,242,0.6);padding:4.5rem 4vw 2rem;}
+  .foot-grid{
+    max-width:1280px;margin:0 auto;display:grid;
+    grid-template-columns:1.4fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid var(--line-light);
+  }
+  .foot-brand .brand{color:var(--paper);margin-bottom:1rem;}
+  .foot-brand p{font-size:0.86rem;line-height:1.7;max-width:280px;font-weight:300;}
+  footer h4{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--bronze);margin-bottom:1.1rem;}
+  footer ul{list-style:none;display:flex;flex-direction:column;gap:0.7rem;}
+  footer a{font-size:0.86rem;font-weight:300;transition:color .3s ease;}
+  footer a:hover{color:var(--paper);}
+  .foot-bottom{
+    max-width:1280px;margin:0 auto;padding-top:1.8rem;
+    display:flex;justify-content:space-between;font-size:0.74rem;flex-wrap:wrap;gap:0.8rem;
+    color:rgba(250,247,242,0.4);
+  }
+
+  @media (max-width: 980px){
+    nav.links{display:none;}
+    .exp-grid, .amen-grid, .loc-grid{grid-template-columns:1fr;}
+    .exp-media{order:-1;margin-bottom:1rem;}
+    .exp-media .float-card{display:none;}
+    .room-grid{grid-template-columns:1fr 1fr;}
+    .masonry{columns:2 180px;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width: 620px){
+    section{padding:5rem 6vw;}
+    .room-grid{grid-template-columns:1fr;}
+    .masonry{columns:1;}
+    .exp-stats{gap:1.6rem;flex-wrap:wrap;}
+    .foot-grid{grid-template-columns:1fr;gap:2.2rem;}
+    .rooms .section-head{flex-direction:column;align-items:flex-start;}
+    .offer .section-inner{padding:3.5rem 6vw;}
+    .offer-top{flex-direction:column;align-items:flex-start;}
+    .offer-price{text-align:left;}
+    .offer-grid{grid-template-columns:1fr;gap:2.2rem;}
+  }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <a href="#top" class="brand">
+    <span class="logo-badge"><img src="images/logo.png" alt="Cozy An Boutique Hotel"></span>
+  </a>
+  <nav class="links">
+    <a href="#offer">Offer</a>
+    <a href="#experience">Experience</a>
+    <a href="#rooms">Rooms</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#location">Location</a>
+  </nav>
+  <a href="#book" class="btn-book">Book Now</a>
+</header>
+
+<section class="hero" id="top">
+  <div class="ph has-img"><img src="images/view-from-the-room.jpg" alt="Sunset view from a Cozy An Boutique Hotel balcony"></div>
+  <div class="lanterns" id="lanternField"></div>
+  <div class="hero-content" id="heroContent">
+    <div class="hero-eyebrow"><span class="rule"></span> Hội An, Vietnam — Cam Chau Riverside</div>
+    <h1>A quiet bend<br>in the <em>Hoài River.</em></h1>
+    <p class="lede">Cozy An Boutique Hotel is a small riverside hotel ten minutes from the lantern-lit lanes of the Ancient Town — built around a courtyard pool, slow mornings, and the kind of stillness Hội An is known for.</p>
+    <div class="hero-cta">
+      <a href="#book" class="btn-book">Check Availability</a>
+      <a href="#experience" class="btn-ghost">Discover the Hotel</a>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>Scroll</span><span class="line"></span></div>
+</section>
+
+<section class="offer" id="offer">
+  <div class="section-inner">
+    <div class="offer-top reveal">
+      <div>
+        <div class="eyebrow light">Summer Offer 2026</div>
+        <h2 style="margin-top:0.7rem;">A Summer to Remember at Cozy An Boutique Hotel.</h2>
+      </div>
+      <div class="offer-price">
+        <div class="from">Net rate from</div>
+        <div class="amount">VND 1,300,000</div>
+        <div class="unit">per room, per night — 2 adults + 1 child under 6</div>
+      </div>
+    </div>
+    <div class="offer-grid">
+      <div class="offer-benefits reveal">
+        <div class="b-item"><span class="dot">—</span> Daily buffet breakfast, 6:30–10:00 AM</div>
+        <div class="b-item"><span class="dot">—</span> Welcome drink upon arrival</div>
+        <div class="b-item"><span class="dot">—</span> Access to our semi-indoor pool overlooking the garden</div>
+        <div class="b-item"><span class="dot">—</span> Complimentary bicycles and gym access</div>
+        <div class="b-item"><span class="dot">—</span> 20% off spa treatments, 25% off lunch &amp; dinner at Cozy Restaurant</div>
+      </div>
+      <div class="offer-dates reveal">
+        <div class="d-item">
+          <div class="eyebrow light">Booking Period</div>
+          <p>Now through 30 September 2026</p>
+        </div>
+        <div class="d-item">
+          <div class="eyebrow light">Stay Period</div>
+          <p>Now – 30 June 2026, and 1 – 30 September 2026</p>
+        </div>
+        <div class="d-item">
+          <div class="eyebrow light">Direct Booking Only</div>
+          <p>Available via email, Facebook, or phone — not on OTAs.</p>
+        </div>
+      </div>
+    </div>
+    <div class="offer-foot reveal">
+      <a href="#book" class="btn-book">Check Availability</a>
+      <p>Limited rooms at this rate — contact us directly to confirm.</p>
+    </div>
+  </div>
+</section>
+
+<section class="experience" id="experience">
+  <div class="section-inner exp-grid">
+    <div class="exp-media reveal">
+      <div class="ph has-img"><img src="images/front-view-hotel.jpg" alt="Cozy An Boutique Hotel, front view"></div>
+      <div class="float-card ph has-img"><img src="images/bar.jpg" alt="Bar and lounge detail, Cozy An Boutique Hotel"></div>
+    </div>
+    <div class="exp-text reveal">
+      <div class="eyebrow">The Experience</div>
+      <h2>Hội An, without the crowd.</h2>
+      <p>Cozy An Boutique Hotel sits on a quiet street in Cam Chau — close enough to walk the Old Town's lantern-lit lanes, far enough to come home to silence. Forty-eight rooms, a single courtyard pool, and a team who remember how you take your egg coffee by the second morning.</p>
+      <p>We built the hotel around the river, not around the room count. Every detail — the woven lanterns at the gate, the bicycles by the lobby, the breakfast cooked to order — is there because it belongs to Hội An, not because a brochure asked for it.</p>
+      <div class="exp-stats">
+        <div><b>48</b><span>Rooms &amp; Suites</span></div>
+        <div><b>10</b><span>Min to Old Town</span></div>
+        <div><b>1</b><span>Courtyard Pool</span></div>
+        <div><b>9.3</b><span>Guest Rating</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="rooms" id="rooms">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <h2>Rooms shaped by the river, not a floor plan.</h2>
+      <p>Four categories, each facing the garden or the water. No two corridors look the same.</p>
+    </div>
+    <div class="room-grid reveal-stagger">
+      <div class="room-card">
+        <div class="room-media">
+          <div class="ph has-img"><img src="images/superior-room.jpg" alt="Superior Room, Cozy An"></div>
+          <div class="room-price">from VND 1,287,520</div>
+        </div>
+        <div class="room-body">
+          <span class="num">01 — Garden Facing</span>
+          <h3>Superior Room</h3>
+          <p>36m², a large double bed or two twins, private balcony. The easiest way into Cozy An Boutique Hotel.</p>
+          <a href="#book" class="room-link">View Room →</a>
+        </div>
+      </div>
+      <div class="room-card">
+        <div class="room-media">
+          <div class="ph has-img"><img src="images/an-village-deluxe.jpg" alt="An Village Deluxe room, Cozy An"></div>
+          <div class="room-price">from VND 1,536,709</div>
+        </div>
+        <div class="room-body">
+          <span class="num">02 — Balcony Suite</span>
+          <h3>An Village Deluxe</h3>
+          <p>38m², choice of one large double bed or two twins, a wider balcony for the slow afternoons.</p>
+          <a href="#book" class="room-link">View Room →</a>
+        </div>
+      </div>
+      <div class="room-card">
+        <div class="room-media">
+          <div class="ph has-img"><img src="images/peaceful-river.jpg" alt="Peaceful River room, Cozy An"></div>
+          <div class="room-price">from VND 2,154,240</div>
+        </div>
+        <div class="room-body">
+          <span class="num">03 — River Facing</span>
+          <h3>Cozy An Peaceful River</h3>
+          <p>40m², top floor, river view, private balcony. Sunrise over the Hoài River from bed.</p>
+          <a href="#book" class="room-link">View Room →</a>
+        </div>
+      </div>
+      <div class="room-card">
+        <div class="room-media">
+          <div class="ph has-img"><img src="images/family-connecting-twin.jpg" alt="Family Connecting Deluxe room, Cozy An"></div>
+          <div class="room-price">from VND 4,112,640</div>
+        </div>
+        <div class="room-body">
+          <span class="num">04 — Family Suite</span>
+          <h3>Family Connecting Deluxe</h3>
+          <p>76m², top floor, 2 twin beds plus 1 large double, connecting layout. The widest arrangement at Cozy An Boutique Hotel.</p>
+          <a href="#book" class="room-link">View Room →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="section-inner">
+      <h2>A closer look at the hotel.</h2>
+    </div>
+    <div class="masonry reveal">
+      <div class="ph has-img"><img src="images/facade-night.jpg" alt="Entrance detail, bicycles at the gate" style="object-position:80% 90%;"></div>
+      <div class="ph has-img"><img src="images/reception.jpg" alt="Reception, Cozy An"></div>
+      <div class="ph has-img"><img src="images/bar.jpg" alt="Bar and lounge, Cozy An"></div>
+      <div class="ph has-img"><img src="images/bathroom.jpg" alt="Bathroom detail, herringbone tile"></div>
+      <div class="ph has-img"><img src="images/breakfast-buffet.jpg" alt="Breakfast buffet spread"></div>
+      <div class="ph has-img"><img src="images/restaurant.jpg" alt="Restaurant dining room"></div>
+      <div class="ph has-img"><img src="images/fitness.jpg" alt="Fitness room"></div>
+      <div class="ph has-img"><img src="images/swimming-pool-01.jpg" alt="Pool at dusk"></div>
+      <div class="ph has-img"><img src="images/swimming-pool.jpg" alt="Pool, evening service"></div>
+      <div class="ph has-img"><img src="images/breakfast-drinks.jpg" alt="Coffee and tea station"></div>
+    </div>
+  </div>
+</section>
+
+<section class="amenities" id="amenities">
+  <div class="section-inner amen-grid">
+    <div class="amen-media reveal">
+      <div class="ph has-img"><img src="images/swimming-pool-01.jpg" alt="Courtyard pool, Cozy An Boutique Hotel"></div>
+    </div>
+    <div class="amen-list reveal-stagger">
+      <div class="amen-item"><h3>Courtyard Pool</h3><span>Open 6am – 9pm, shaded loungers</span></div>
+      <div class="amen-item"><h3>Free Bicycles</h3><span>Old Town in 10 minutes by bike</span></div>
+      <div class="amen-item"><h3>Breakfast Included</h3><span>Cooked to order, daily</span></div>
+      <div class="amen-item"><h3>Airport Transfer</h3><span>On request, 30 min from Đà Nẵng</span></div>
+      <div class="amen-item"><h3>In-Room Spa</h3><span>Traditional Vietnamese massage</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="location" id="location">
+  <div class="section-inner loc-grid">
+    <div class="loc-text reveal">
+      <div class="eyebrow light">Find Us</div>
+      <h2 style="margin-top:0.8rem;">128 Trần Quang Khải, Cam Chau.</h2>
+      <p>A quiet residential street on the east bank, a short walk from the river and a short bike ride from the Japanese Covered Bridge.</p>
+      <div class="loc-points">
+        <div><b>Old Town</b><span>10 min walk</span></div>
+        <div><b>An Bang Beach</b><span>15 min by bike</span></div>
+        <div><b>Đà Nẵng Airport</b><span>32 min by car</span></div>
+      </div>
+    </div>
+    <div class="map-frame reveal">
+      <img src="images/aerial-view-hotel.jpg" alt="Aerial view of Cozy An on the Hoài River bend">
+      <div class="map-pin"><div class="dot"></div><div class="stick"></div></div>
+      <div class="map-label">Cam Chau, Hội An — the bend in the river, seen from above</div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="section-inner" style="padding:2rem 4vw 1.5rem;">
+    <div class="testi-head reveal">
+      <div class="eyebrow light">What Guests Say</div>
+      <h2 style="margin-top:0.8rem;font-size:clamp(2rem,3.4vw,2.8rem);">Real stays. Real words.</h2>
+      <p style="margin-top:0.8rem;color:rgba(250,247,242,0.5);font-weight:300;font-size:0.9rem;">Four verified reviews from Tripadvisor — all from June 2026.</p>
+    </div>
+  </div>
+  <div class="testi-carousel">
+    <div class="testi-track">
+
+      <div class="testi-card">
+        <div class="testi-card-head">
+          <div class="testi-avatar">Ø</div>
+          <div class="testi-card-meta">
+            <div class="reviewer">Øyvind J.</div>
+            <div class="service">Solo traveller · June 2026</div>
+          </div>
+        </div>
+        <div class="testi-stars-sm"><span></span><span></span><span></span><span></span><span></span></div>
+        <p class="testi-card-quote">"I think this may be the best hotel I ever stayed at. I even extended my stay since I loved it so much. I never experienced feeling so welcome at a hotel before."</p>
+        <div class="testi-source">Tripadvisor · Verified</div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-card-head">
+          <div class="testi-avatar">V</div>
+          <div class="testi-card-meta">
+            <div class="reviewer">Victoria H.</div>
+            <div class="service">Couple · June 2026</div>
+          </div>
+        </div>
+        <div class="testi-stars-sm"><span></span><span></span><span></span><span></span><span></span></div>
+        <p class="testi-card-quote">"Lovely hotel with very kind and attentive staff. We explored the old town and the river — so close by. The room was very comfortable and the pool was great."</p>
+        <div class="testi-source">Tripadvisor · Verified</div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-card-head">
+          <div class="testi-avatar">J</div>
+          <div class="testi-card-meta">
+            <div class="reviewer">Johny C.</div>
+            <div class="service">Couple · Sepang, Malaysia</div>
+          </div>
+        </div>
+        <div class="testi-stars-sm"><span></span><span></span><span></span><span></span><span></span></div>
+        <p class="testi-card-quote">"Spacious and clean room, big bathtub, beautiful views. Simple and hassle free. Many local and intercontinental breakfast options. Would definitely stay again."</p>
+        <div class="testi-source">Tripadvisor · Verified</div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-card-head">
+          <div class="testi-avatar">K</div>
+          <div class="testi-card-meta">
+            <div class="reviewer">Kentaro A.</div>
+            <div class="service">Family · June 2026</div>
+          </div>
+        </div>
+        <div class="testi-stars-sm"><span></span><span></span><span></span><span></span><span></span></div>
+        <p class="testi-card-quote">"The people here were very welcoming. We had a very fun time using all of the facilities, which were prepared perfectly. My family hopes to come back soon."</p>
+        <div class="testi-source">Tripadvisor · Verified</div>
+      </div>
+
+      <!-- duplicate set for seamless loop -->
+      <div class="testi-card">
+        <div class="testi-card-head">
+          <div class="testi-avatar">Ø</div>
+          <div class="testi-card-meta">
+            <div class="reviewer">Øyvind J.</div>
+            <div class="service">Solo traveller · June 2026</div>
+          </div>
+        </div>
+        <div class="testi-stars-sm"><span></span><span></span><span></span><span></span><span></span></div>
+        <p class="testi-card-quote">"I think this may be the best hotel I ever stayed at. I even extended my stay since I loved it so much. I never experienced feeling so welcome at a hotel before."</p>
+        <div class="testi-source">Tripadvisor · Verified</div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-card-head">
+          <div class="testi-avatar">V</div>
+          <div class="testi-card-meta">
+            <div class="reviewer">Victoria H.</div>
+            <div class="service">Couple · June 2026</div>
+          </div>
+        </div>
+        <div class="testi-stars-sm"><span></span><span></span><span></span><span></span><span></span></div>
+        <p class="testi-card-quote">"Lovely hotel with very kind and attentive staff. We explored the old town and the river — so close by. The room was very comfortable and the pool was great."</p>
+        <div class="testi-source">Tripadvisor · Verified</div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-card-head">
+          <div class="testi-avatar">J</div>
+          <div class="testi-card-meta">
+            <div class="reviewer">Johny C.</div>
+            <div class="service">Couple · Sepang, Malaysia</div>
+          </div>
+        </div>
+        <div class="testi-stars-sm"><span></span><span></span><span></span><span></span><span></span></div>
+        <p class="testi-card-quote">"Spacious and clean room, big bathtub, beautiful views. Simple and hassle free. Many local and intercontinental breakfast options. Would definitely stay again."</p>
+        <div class="testi-source">Tripadvisor · Verified</div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-card-head">
+          <div class="testi-avatar">K</div>
+          <div class="testi-card-meta">
+            <div class="reviewer">Kentaro A.</div>
+            <div class="service">Family · June 2026</div>
+          </div>
+        </div>
+        <div class="testi-stars-sm"><span></span><span></span><span></span><span></span><span></span></div>
+        <p class="testi-card-quote">"The people here were very welcoming. We had a very fun time using all of the facilities, which were prepared perfectly. My family hopes to come back soon."</p>
+        <div class="testi-source">Tripadvisor · Verified</div>
+      </div>
+
+    </div>
+  </div>
+  <div style="text-align:center;padding:2.5rem 4vw 5rem;">
+    <a href="https://www.tripadvisor.com" target="_blank" rel="noopener" class="btn-ghost" style="display:inline-block;font-size:0.74rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--paper);padding:0.85rem 1.6rem;border:1px solid rgba(250,247,242,0.4);">Read all reviews on Tripadvisor</a>
+  </div>
+</section>
+<section class="faq">
+  <div class="section-inner">
+    <div class="section-head reveal" style="margin-bottom:2.5rem;">
+      <div class="eyebrow">Good to Know</div>
+      <h2 class="serif" style="font-size:clamp(2rem,3.2vw,2.6rem);margin-top:0.8rem;">Frequently Asked</h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item open">
+        <button class="faq-q"><span>What time is check-in and check-out?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>Check-in from 2:00 PM, check-out by 12:00 PM. Early check-in and late check-out are available on request, subject to availability.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>Is breakfast included in the rate?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>Yes — a daily breakfast cooked to order is included with every room category, served in the garden restaurant from 7:00 to 10:30 AM.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>Do you offer airport transfers?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>We can arrange a private transfer from Đà Nẵng International Airport (approx. 32 minutes). Please share your flight details after booking.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>What is the cancellation policy?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p>Free cancellation up to 48 hours before arrival on flexible rates booked directly with us. Non-refundable rates are clearly marked at checkout.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta" id="book">
+  <div class="ph has-img"><img src="images/facade-night.jpg" alt="Cozy An entrance, evening" style="object-position:50% 25%;"></div>
+  <div class="section-inner reveal">
+    <div class="eyebrow" style="color:#E9C9A6;">Summer Offer · Direct Booking</div>
+    <h2 style="margin-top:1rem;">From VND 1,300,000 net, <em style="font-style:italic;">create your Summer to Remember.</em></h2>
+    <p>Breakfast, welcome drink, pool, bicycles, gym, and spa &amp; dining discounts included — book directly by email, Facebook, or phone, now through 30 September 2026.</p>
+    <a href="#" class="btn-book" style="padding:1rem 2.4rem;">Check Availability</a>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <a href="#top" class="brand">
+        <span class="logo-badge"><img src="images/logo.png" alt="Cozy An Boutique Hotel"></span>
+      </a>
+      <p>128 Trần Quang Khải, Cẩm Châu, Hội An, Quảng Nam, Vietnam. A small riverside hotel, ten minutes from the Ancient Town.</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#rooms">Rooms &amp; Suites</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#amenities">Amenities</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Hotel</h4>
+      <ul>
+        <li><a href="#location">Location</a></li>
+        <li><a href="#book">Book Direct</a></li>
+        <li><a href="#">Cancellation Policy</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+842353665666">+84 235 3665 666</a></li>
+        <li><a href="#">reservations@cozyan.vn</a></li>
+        <li><a href="https://www.instagram.com/cozyan_boutique_hotel_hoian/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://www.facebook.com/p/Cozy-An-Boutique-Hotel-Hoian-61552494051669/" target="_blank" rel="noopener">Facebook</a></li>
+      </ul>
+      <div class="social-row">
+        <a href="https://www.facebook.com/p/Cozy-An-Boutique-Hotel-Hoian-61552494051669/" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.16 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.78-3.89 1.1 0 2.24.2 2.24.2v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.45 2.91h-2.33V22c4.78-.78 8.44-4.94 8.44-9.94Z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/cozyan_boutique_hotel_hoian/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 Cozy An Boutique Hotel, Hội An. Design concept by Cris Maturana Photo.</span>
+    <span>Privacy · Terms</span>
+  </div>
+</footer>
+
+<script>
+  // Header solid-on-scroll
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    if (item.classList.contains('open')) a.style.maxHeight = a.scrollHeight + 'px';
+    q.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(o => {
+        o.classList.remove('open');
+        o.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // Signature element: floating lanterns rising through the hero
+  const lanternField = document.getElementById('lanternField');
+  const lanternSVG = `<svg viewBox="0 0 40 52"><path class="l1" d="M20 4c-8 0-13 6-13 14 0 9 6 20 13 30 7-10 13-21 13-30 0-8-5-14-13-14Z"/><ellipse class="l2" cx="20" cy="17" rx="9" ry="6"/></svg>`;
+  function spawnLantern(){
+    const el = document.createElement('div');
+    el.className = 'lantern-svg';
+    el.innerHTML = lanternSVG;
+    const size = 18 + Math.random()*20;
+    el.style.width = size + 'px';
+    el.style.height = size*1.3 + 'px';
+    el.style.left = (Math.random()*92) + '%';
+    el.style.bottom = '-8%';
+    el.style.animationDuration = (11 + Math.random()*7) + 's, ' + (4 + Math.random()*2) + 's';
+    el.style.animationDelay = (Math.random()*2) + 's, 0s';
+    lanternField.appendChild(el);
+    setTimeout(() => el.remove(), 19000);
+  }
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    for (let i=0;i<3;i++) setTimeout(spawnLantern, i*2500);
+    setInterval(spawnLantern, 3200);
+  }
+</script>
+</body>
+</html>
